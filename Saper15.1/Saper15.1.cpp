@@ -1,13 +1,24 @@
 ﻿#include "Saper15.h"
+#include <ctime>
 
 int main() {
-	system("chcp 1251");
-	Saper15 encode;
+	cout << "Current version Saper15.5" << endl;
+	Saper15 obj;
+	fstream file;
 	string line;
-	cout << "Saper15.2" << endl;
-	cout << encode.GetSymbols() << endl;
-	cout << "Enter line: ";
-	cin.ignore(cin.rdbuf()->in_avail());
-	getline(cin, line);
-	cout << encode.HashString(line);
+	string* arrOfString = new string[20];
+	int count = 0;
+
+
+	file.open("encoded.txt");
+	while (getline(file, line)) {
+		arrOfString[count++] = obj.DeHashLine(line);
+	}
+	file.close();
+
+	for (int i = 0; i < count; i++) {
+		cout << arrOfString[i] << endl;
+	}
+
+	return 0;
 }
