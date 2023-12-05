@@ -2,6 +2,7 @@
 #include <iostream>
 #include <string>
 #include <fstream>
+#include <Windows.h>
 using namespace std;
 
 inline int IndexOf(string main, char in) {
@@ -29,6 +30,10 @@ public:
 		}
 
 		for (int i = 97; i <= 122; i++) {
+			this->symbols += (static_cast<char>(i));
+		}
+
+		for (int i = 192; i <= 255; i++) {
 			this->symbols += (static_cast<char>(i));
 		}
 
@@ -66,12 +71,24 @@ public:
 		file.close();
 	}
 
+	string GetSymbols() {
+		return this->symbols;
+	}
+
+	string GetASCII() {
+		return this->acsii;
+	}
+
 	string HashString(string str) {
 		string hashedLine;
-
-		for (int i = 0; i < str.size(); i++) {
-			int index = IndexOf(this->symbols, str[i]);
-			hashedLine += this->acsii[index];
+		try {
+			for (int i = 0; i < str.size(); i++) {
+				int index = IndexOf(this->symbols, str[i]);
+				hashedLine += this->acsii[index];
+			}
+		}
+		catch (exception& ex) {
+			cout << ex.what() << endl;
 		}
 		return hashedLine;
 	}
