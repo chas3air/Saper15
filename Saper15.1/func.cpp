@@ -13,5 +13,4 @@ void devString(string in, string* arr) {
 		}
 	}
 	arr[c] = tmp;
-	//(*count) = ++c;
 }

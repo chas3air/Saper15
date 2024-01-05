@@ -1,12 +1,12 @@
 #pragma once
-#include "func.h"
+#include <string>
+#include <fstream>
+using namespace std;
 
 class Saper15
 {
 private:
-	string hash;
-	string deHash;
-	string acsii;
+	string ascii;
 	string symbols;
 
 public:
@@ -19,4 +19,6 @@ public:
 	string HashLine(string str);
 
 	string DeHashLine(string str);
+
+	int IndexOf(string main, char in);
 };

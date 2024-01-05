@@ -1,24 +1,11 @@
-﻿#include "Saper15.h"
-#include <ctime>
+﻿#include "func.h"
+#include "Saper15.h"
 
 int main() {
-	cout << "Current version Saper15.5" << endl;
+	cout << "Current version Saper15.7" << endl;
 	Saper15 obj;
-	fstream file;
-	string line;
-	string* arrOfString = new string[20];
-	int count = 0;
+	cout << "Hello, world" << endl;
+ 	cout << obj.HashLine("Hello, world") << endl;
 
-
-	file.open("encoded.txt");
-	while (getline(file, line)) {
-		arrOfString[count++] = obj.DeHashLine(line);
-	}
-	file.close();
-
-	for (int i = 0; i < count; i++) {
-		cout << arrOfString[i] << endl;
-	}
-
-	return 0;
+	system("pause");
 }
