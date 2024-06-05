@@ -2,28 +2,35 @@
 
 Saper15::Saper15() : ascii{ "" }, symbols{ "" } {
 	fstream file;
-	this->symbols = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz !\"#$ % &'()*+,-./:;<=>?@[]^_`-|{}~0123456789";
+	//this->symbols = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz !#$%&'()*+,-./:;<=>?@[]^`-|{}~0123456789_";
 
 	string line;
 
-	file.open("ascii.txt");
+	file.open("shuffled.txt");
 	if (!file.is_open()) this->ascii = "";
 	while (getline(file, line)) {
 		this->ascii += line;
 	}
 	file.close();
+
+	file.open("ascii.txt");
+	if (!file.is_open()) this->symbols = "";
+		while (getline(file, line)) {
+		this->symbols += line;
+	}
+	file.close();
 }
 
-string Saper15::GetSymbols() const {
+string Saper15::GetSymbols() const { // возвращает символы все возможные символы
 	return this->symbols;
 }
 
-string Saper15::GetASCII() const {
+string Saper15::GetASCII() const { // возвращает перемешанные символы ascii
 	return this->ascii;
 }
 
 string Saper15::HashLine(string str) {
-	if (this->ascii.size() < 1)
+	if (this->ascii.size() < 1 or this->symbols.size() < 1)
 		return "";
 
 	string hashedLine;
@@ -35,7 +42,7 @@ string Saper15::HashLine(string str) {
 }
 
 string Saper15::DeHashLine(string str) {
-	if (this->ascii.size() < 1)
+	if (this->ascii.size() < 1 or this->symbols.size() < 1)
 		return "";
 
 	string deHashLine;

@@ -1,9 +1,0 @@
-pasha 12345 user
-dima admin admin
-gena 09876 user
-hohland 007 user
-yulia 456 admin
-fo 234 user
-gosha 123 user
-yulia 3 user
-pasha gogo user
